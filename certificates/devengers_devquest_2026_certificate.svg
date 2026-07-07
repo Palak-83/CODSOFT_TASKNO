@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#111827"/>
+  <rect x="40" y="40" width="1120" height="720" rx="24" fill="#fdfefe" stroke="#08b1ff" stroke-width="6"/>
+  <text x="600" y="180" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="42" fill="#111827">Certificate of Appreciation</text>
+  <text x="600" y="260" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="34" fill="#111827">Devengers Devquest 2026</text>
+  <text x="600" y="420" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="28" fill="#111827">This placeholder image is ready to be replaced</text>
+  <text x="600" y="470" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="28" fill="#111827">with your real certificate image file.</text>
+  <circle cx="600" cy="620" r="90" fill="#08b1ff" opacity="0.14"/>
+  <text x="600" y="635" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="30" fill="#08b1ff">TEAM LEAD</text>
+</svg>
