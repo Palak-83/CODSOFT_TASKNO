@@ -705,7 +705,6 @@ body::before {
     }
 }
 
-/* Custom circular cursor */
 .custom-cursor {
     position: fixed;
     left: 0;
@@ -733,14 +732,12 @@ body::before {
     box-shadow: 0 10px 34px rgba(0,0,0,0.36), inset 0 0 28px rgba(255,255,255,0.06);
 }
 
-/* Underlying element response when hovered by cursor */
 .hovered-by-cursor {
     transform-origin: center;
     transform: scale(1.05);
     transition: transform 300ms ease, color 220ms linear;
 }
 
-/* Larger reaction for headings */
 .hovered-by-cursor-large {
     transform-origin: center;
     transform: scale(1.08);
@@ -748,7 +745,6 @@ body::before {
     font-weight: 600;
 }
 
-/* Smaller reaction for links */
 .hovered-by-cursor-small {
     transform-origin: center;
     transform: scale(1.03);
@@ -766,7 +762,6 @@ body::before {
     border-color: rgba(255,255,255,0.12);
 }
 
-/* Make sure the cursor is not shown on small/touch devices */
 @media (max-width: 780px) {
     .custom-cursor { display: none; }
 }
