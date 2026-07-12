@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="toast-container" id="toast-container" aria-live="polite"></div>
+      <div class="quote-popup" id="quote-popup" hidden></div>
+
+      <div class="welcome-overlay" id="welcome-overlay">
+        <div class="welcome-modal">
+          <p class="eyebrow">Personalized planner</p>
+          <h2>Hi there!</h2>
+          <p class="subtext">Sign in with your email once and we’ll remember you next time.</p>
+          <form id="welcome-form" class="welcome-form">
+            <input id="user-name" type="text" maxlength="30" placeholder="Your name" required />
+            <button class="primary-btn" type="submit">Continue</button>
+          </form>
+        </div>
+      </div>
+
+      <header class="hero-card">
+        <div>
+          <p class="eyebrow">Stay focused</p>
+          <h1 class="fire-title">To-Do List</h1>
+          <p class="subtext">
+            Organize your day, track progress, and keep every plan in view.
+          </p>
+          <div class="greeting-pill" id="greeting-pill">Hi, friend</div>
+        </div>
+        <div class="hero-actions">
+          <button class="secondary-btn small-btn" id="change-name-btn" type="button" hidden>Change name</button>
+          <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+      </header>
+
+      <section class="stats-card" aria-label="Task statistics">
+        <div class="stat-box">
+          <span class="stat-value" id="total-count">0</span>
+          <span class="stat-label">Total</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value completed" id="completed-count">0</span>
+          <span class="stat-label">Completed</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value pending" id="pending-count">0</span>
+          <span class="stat-label">Pending</span>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <form class="form-card" id="task-form">
+          <h2 id="form-title">Add a new task</h2>
+
+          <div class="field-group">
+            <label for="task-title">Task title</label>
+            <input id="task-title" name="title" type="text" maxlength="80" placeholder="What needs to be done?" required />
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label for="task-category">Category</label>
+              <input id="task-category" name="category" type="text" maxlength="30" placeholder="Work, Study, Personal" />
+            </div>
+            <div class="field-group">
+              <label for="task-priority">Priority</label>
+              <select id="task-priority" name="priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+              <div class="priority-help" aria-label="Priority color guide">
+                <span class="priority-help-item"><span class="priority-help-dot priority-high"></span>High</span>
+                <span class="priority-help-item"><span class="priority-help-dot priority-medium"></span>Medium</span>
+                <span class="priority-help-item"><span class="priority-help-dot priority-low"></span>Low</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label for="task-due">Due date</label>
+              <input id="task-due" name="dueDate" type="date" />
+            </div>
+            <div class="field-group">
+              <label for="task-status">Status</label>
+              <select id="task-status" name="status">
+                <option value="pending" selected>Pending</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="task-notes">Notes</label>
+            <textarea id="task-notes" name="notes" rows="3" maxlength="160" placeholder="Add a short note or context"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button class="primary-btn" type="submit" id="submit-btn">Add task</button>
+            <button class="secondary-btn" type="button" id="cancel-edit" hidden>Cancel</button>
+          </div>
+        </form>
+
+        <section class="tasks-card" aria-label="Task list">
+          <div class="tasks-toolbar">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input id="search-input" type="search" placeholder="Search tasks" />
+            </div>
+            <div class="filters">
+              <select id="status-filter">
+                <option value="all">All status</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+              </select>
+              <select id="priority-filter">
+                <option value="all">All priorities</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </div>
+          </div>
+
+          <ul id="task-list" class="task-list"></ul>
+        </section>
+      </section>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

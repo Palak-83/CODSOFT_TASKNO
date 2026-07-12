@@ -83,9 +83,7 @@ hobbyCloseButtons.forEach(button => {
     });
 });
 
-// Custom circular cursor: smooth follow + hover magnify
 (function() {
-    // Only enable for hover-capable devices
     if (!window.matchMedia || !window.matchMedia('(hover: hover)').matches) return;
 
     const cursor = document.getElementById('custom-cursor');
@@ -106,9 +104,7 @@ hobbyCloseButtons.forEach(button => {
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        // ensure visible when moving
         cursor.style.opacity = '1';
-        // update transform-origin for the currently hovered element without forcing layout reads
         if (currentHovered && hoveredRect) {
             const relX = ((mouseX - hoveredRect.left) / hoveredRect.width) * 100;
             const relY = ((mouseY - hoveredRect.top) / hoveredRect.height) * 100;
@@ -119,13 +115,11 @@ hobbyCloseButtons.forEach(button => {
     document.addEventListener('mouseenter', () => cursor.style.opacity = '1');
     document.addEventListener('mouseleave', () => cursor.style.opacity = '0');
 
-    // Attach hover handlers and vary cursor size by element (headings larger, links smaller)
     hoverables.forEach(el => {
         el.addEventListener('mouseenter', (ev) => {
             isHover = true;
             currentHovered = el;
             hoveredRect = el.getBoundingClientRect();
-            // clear previous size classes
             cursor.classList.remove('cursor-hover', 'cursor-large', 'cursor-small');
             el.classList.remove('hovered-by-cursor', 'hovered-by-cursor-large', 'hovered-by-cursor-small');
 
@@ -141,7 +135,6 @@ hobbyCloseButtons.forEach(button => {
                 el.classList.add('hovered-by-cursor');
             }
 
-            // set initial transform-origin based on current mouse position
             const relX = ((ev.clientX - hoveredRect.left) / hoveredRect.width) * 100;
             const relY = ((ev.clientY - hoveredRect.top) / hoveredRect.height) * 100;
             el.style.transformOrigin = `${relX}% ${relY}%`;
@@ -150,7 +143,6 @@ hobbyCloseButtons.forEach(button => {
             isHover = false;
             cursor.classList.remove('cursor-hover', 'cursor-large', 'cursor-small');
             el.classList.remove('hovered-by-cursor', 'hovered-by-cursor-large', 'hovered-by-cursor-small');
-            // reset
             if (currentHovered) {
                 currentHovered.style.transformOrigin = '';
                 currentHovered = null;
@@ -166,14 +158,12 @@ hobbyCloseButtons.forEach(button => {
         if (cursor.classList.contains('cursor-large')) scale = 3.2;
         else if (cursor.classList.contains('cursor-small')) scale = 1.5;
         else if (cursor.classList.contains('cursor-hover')) scale = 2.5;
-        // Apply translate + center offset + scale in one transform (no layout thrash)
         cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%) scale(${scale})`;
         rafId = requestAnimationFrame(render);
     }
 
     rafId = requestAnimationFrame(render);
 
-    // Clean up when page unloads
     window.addEventListener('unload', () => {
         if (rafId) cancelAnimationFrame(rafId);
     });
